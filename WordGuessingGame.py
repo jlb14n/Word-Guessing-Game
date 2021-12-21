@@ -64,7 +64,7 @@ _|_"""
 #Initialization
 word_list=open("words_alpha.txt").readlines()
 word=(random.choice(word_list))
-word=word[:-1]
+word=word[:-1] #Removes the /n in word
 print(word)
 print(len(word))
 word_his=set()
@@ -79,6 +79,7 @@ while play_bool:
     #Choosing a random word not yet used
     while word in word_his:
         word=(random.choice(word_list))
+        word=word[:-1] #Removes the /n in word
     word_his.add(word)
     
     #Initialize Guessing
