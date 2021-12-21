@@ -1,6 +1,66 @@
 #imports
 import random
-
+#------------------------------------------------------------------------------------------------------------------------------------------
+#Functions
+def art(num):
+    if num==7:
+        a=""" ___
+ |  
+ |  
+ |  
+ |   
+_|_"""
+    elif num==6:
+        a=""" ___
+ |  |
+ |  
+ |  
+ |   
+_|_"""
+    elif num==5:
+        a=""" ___
+ |  |
+ |  O
+ |  
+ |   
+_|_"""
+    if num==4:
+        a=""" ___
+ |  |
+ |  O
+ |  |
+ |   
+_|_"""
+    elif num==3:
+        a=""" ___
+ |  |
+ |  O
+ |  |\\
+ |   
+_|_"""
+    elif num==2:
+        a=""" ___
+ |  |
+ |  O
+ | /|\\
+ |   
+_|_"""
+    elif num==1:
+        a=""" ___
+ |  |
+ |  O
+ | /|\\
+ |   \\
+_|_"""
+    elif num==0:
+        a=""" ___
+ |  |
+ |  O
+ | /|\\
+ | / \\
+_|_"""
+    print(a)
+#------------------------------------------------------------------------------------------------------------------------------------------
 #Initialization
 word_list=open("words_alpha.txt").readlines()
 word=(random.choice(word_list))
@@ -10,7 +70,7 @@ win_num=0
 loss_num=0
 play_bool=True
 print("Welcome to the Word Guessing Game!")
-
+#------------------------------------------------------------------------------------------------------------------------------------------
 #The game itself:
 while play_bool:
     #Choosing a random word not yet used
@@ -31,7 +91,10 @@ while play_bool:
                 temp_print+=word[i] + " "
             else:
                 temp_print+="_ "
+        art(guess_num)
         print(temp_print)
+        if len(guess_let)>0:
+            print("You have already guessed: {0}".format(guess_let))
 
         #User input
         print("You have {0} guesses remaining!".format(guess_num))
@@ -43,10 +106,13 @@ while play_bool:
                 if guess==word:
                     win=True
                     break
+                guess_num-=1
             if len(guess)==1 and guess in letter:
                 if guess in guess_let:
                     print("You've guessed that before!")
                 else:
+                    if guess not in set(word):
+                        guess_num-=1
                     invalid=False
                     guess_let.add(guess)
                 if set(word).issubset(guess_let):
@@ -54,12 +120,12 @@ while play_bool:
                     break
             else:
                 print("Invalid entry")
-        guess_num-=1
         if win:
             break
     else:
+        art(guess_num)
         print("You lose :(")
-        print("The word was '{0}'".format(word))
+        print("The word was: {0}".format(word))
         loss_num+=1
     if win:
         print("You won with {0} guesses remaining!".format(guess_num))
@@ -77,3 +143,6 @@ while play_bool:
             break
         else:
             print('Invalid Entry')
+
+
+
