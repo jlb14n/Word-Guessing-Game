@@ -64,6 +64,9 @@ _|_"""
 #Initialization
 word_list=open("words_alpha.txt").readlines()
 word=(random.choice(word_list))
+word=word[:-1]
+print(word)
+print(len(word))
 word_his=set()
 letter=("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
 win_num=0
