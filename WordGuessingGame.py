@@ -1,5 +1,9 @@
+#imports
+import random
+
 #Initialization
-word="word"
+word_list=open("words_alpha.txt").readlines()
+word=(random.choice(word_list))
 letter=("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
 guess_let=set()
 guess_num=7
